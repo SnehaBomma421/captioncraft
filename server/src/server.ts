@@ -35,7 +35,7 @@ const gemini = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
 
-app.use(cors({ origin: clientOrigin }));
+app.use(cors());
 
 app.use(express.json({ limit: "1mb" }));
 
@@ -422,8 +422,12 @@ app.use(
   }
 );
 
-app.listen(port, () => {
-  console.log(
-    `CaptionCraft API running on http://localhost:${port}`
-  );
-});
+export default app;
+
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(
+      `CaptionCraft API running on http://localhost:${port}`
+    );
+  });
+}

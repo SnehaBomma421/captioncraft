@@ -1,6 +1,6 @@
 import type { Settings, Caption } from "../types";
 
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+const API_BASE = import.meta.env.VITE_API_URL || "";
 
 export async function generateCaptions(file: File, settings: Settings): Promise<Caption[]> {
   const form = new FormData();
@@ -14,7 +14,7 @@ export async function generateCaptions(file: File, settings: Settings): Promise<
   form.append("hashtags", settings.hashtags);
   form.append("customInstructions", settings.customInstructions);
 
-  const response = await fetch(`${API_URL}/api/generate-caption`, {
+  const response = await fetch(`${API_BASE}/api/generate-caption`, {
     method: "POST",
     body: form
   });
