@@ -3,8 +3,13 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
-    "install:all": "npm install && npm --prefix client install && npm --prefix server install",
+    "install:all": "npm install",
+    "postinstall": "npm --prefix client install && npm --prefix server install",
     "dev": "concurrently \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
     "build": "npm --prefix client run build && npm --prefix server run build",
     "start": "npm --prefix server start"
