@@ -1,0 +1,5 @@
+import { BrainCircuit, ClipboardCopy, Palette, ShieldCheck } from "lucide-react";
+export default function Features(){
+ const items=[["Context-aware AI",BrainCircuit,"Captions reflect objects, mood, setting, colors, and visual context."],["Style that sounds like you",Palette,"Professional, aesthetic, funny, motivational, trendy, or custom."],["One-click sharing prep",ClipboardCopy,"Edit, copy one, or copy all without leaving the app."],["Private by design",ShieldCheck,"No accounts and no database. Images are processed for the current request."]];
+ return <section id="features" className="features shell"><div className="section-title"><div className="eyebrow"><span className="pulse-dot"/> Built for creators</div><h2>Everything you need. <span>Nothing you don't.</span></h2></div><div className="feature-grid">{items.map(([t,I,d])=><div className="feature-card" key={t as string}><div className="feature-icon"><I size={20}/></div><h3>{t as string}</h3><p>{d as string}</p></div>)}</div></section>
+}
